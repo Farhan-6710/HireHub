@@ -13,14 +13,22 @@ const AuthButtons: React.FC<{
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+      document.body.style.paddingRight = "15px"; // Add padding to create fake scrollbar
     } else {
       document.body.style.overflow = ""; // Reset scrolling when modal is closed
+      document.body.style.paddingRight = ""; // Reset padding when modal is closed
     }
 
     return () => {
       document.body.style.overflow = ""; // Reset scrolling on unmount
+      document.body.style.paddingRight = ""; // Reset padding on unmount
     };
   }, [isModalOpen]);
+
+  const handleLoginClick = () => {
+    setShowSignIn(true); // Show the login modal
+    document.body.style.paddingRight = "15px"; // Add padding to create fake scrollbar
+  };
 
   return (
     <div className="hidden lg:flex space-x-2 sm:space-x-4">
@@ -28,7 +36,7 @@ const AuthButtons: React.FC<{
         <Button
           variant="outline"
           className="text-slate-950 dark:text-gray-200 flex items-center"
-          onClick={() => setShowSignIn(true)}
+          onClick={handleLoginClick} // Update to handle the click
         >
           <LogIn size={20} className="mr-2" />
           Login

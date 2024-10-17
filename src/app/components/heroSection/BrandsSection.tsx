@@ -17,7 +17,7 @@ export default function BrandsSection() {
       animate={isInView ? "visible" : "hidden"}
       className="-mt-4 relativez-0"
     >
-      <InfiniteMovingCards direction="left" speed="slow" />
+      <InfiniteMovingCards direction="left" speed="fast" />
     </motion.div>
   );
 }

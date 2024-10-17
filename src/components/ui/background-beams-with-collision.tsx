@@ -86,14 +86,15 @@ export const BackgroundBeamsWithCollision = ({
         className
       )}
     >
-      {showBeams && beams.map((beam) => (
-        <CollisionMechanism
-          key={beam.initialX + "beam-idx"}
-          beamOptions={beam}
-          containerRef={containerRef}
-          parentRef={parentRef}
-        />
-      ))}
+      {showBeams &&
+        beams.map((beam) => (
+          <CollisionMechanism
+            key={beam.initialX + "beam-idx"}
+            beamOptions={beam}
+            containerRef={containerRef}
+            parentRef={parentRef}
+          />
+        ))}
 
       {children}
       <div
@@ -108,26 +109,26 @@ export const BackgroundBeamsWithCollision = ({
   );
 };
 
-// (CollisionMechanism remains unchanged)
-
-const CollisionMechanism = React.forwardRef<
-  HTMLDivElement,
-  {
-    containerRef: React.RefObject<HTMLDivElement>;
-    parentRef: React.RefObject<HTMLDivElement>;
-    beamOptions?: {
-      initialX?: number;
-      translateX?: number;
-      initialY?: number;
-      translateY?: number;
-      rotate?: number;
-      className?: string;
-      duration?: number;
-      delay?: number;
-      repeatDelay?: number;
-    };
-  }
->(({ parentRef, containerRef, beamOptions = {} }, ref) => {
+// Updated CollisionMechanism component
+const CollisionMechanism = ({
+  containerRef,
+  parentRef,
+  beamOptions = {},
+}: {
+  containerRef: React.RefObject<HTMLDivElement>;
+  parentRef: React.RefObject<HTMLDivElement>;
+  beamOptions?: {
+    initialX?: number;
+    translateX?: number;
+    initialY?: number;
+    translateY?: number;
+    rotate?: number;
+    className?: string;
+    duration?: number;
+    delay?: number;
+    repeatDelay?: number;
+  };
+}) => {
   const beamRef = useRef<HTMLDivElement>(null);
   const [collision, setCollision] = useState<{
     detected: boolean;
@@ -187,38 +188,38 @@ const CollisionMechanism = React.forwardRef<
   }, [collision]);
 
   return (
-    <>
-      <motion.div
-        key={beamKey}
-        ref={beamRef}
-        animate="animate"
-        initial={{
-          translateY: beamOptions.initialY || "-200px",
-          translateX: beamOptions.initialX || "0px",
+    <motion.div
+      key={beamKey}
+      ref={beamRef}
+      animate="animate"
+      initial={{
+        translateY: beamOptions.initialY || "-200px",
+        translateX: beamOptions.initialX || "0px",
+        rotate: beamOptions.rotate || 0,
+      }}
+      variants={{
+        animate: {
+          translateY: beamOptions.translateY || "1800px",
+          translateX: beamOptions.translateX || "0px",
           rotate: beamOptions.rotate || 0,
-        }}
-        variants={{
-          animate: {
-            translateY: beamOptions.translateY || "1800px",
-            translateX: beamOptions.translateX || "0px",
-            rotate: beamOptions.rotate || 0,
-          },
-        }}
-        transition={{
-          duration: beamOptions.duration || 8,
-          repeat: Infinity,
-          repeatType: "loop",
-          ease: "linear",
-          delay: beamOptions.delay || 0,
-          repeatDelay: beamOptions.repeatDelay || 0,
-        }}
-        className={cn(
-          "absolute left-0 top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t from-indigo-500 via-purple-500 to-transparent",
-          beamOptions.className
-        )}
-      />
-    </>
+        },
+      }}
+      transition={{
+        duration: beamOptions.duration || 8,
+        repeat: Infinity,
+        repeatType: "loop",
+        ease: "linear",
+        delay: beamOptions.delay || 0,
+        repeatDelay: beamOptions.repeatDelay || 0,
+      }}
+      className={cn(
+        "absolute left-0 top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t from-indigo-500 via-purple-500 to-transparent",
+        beamOptions.className
+      )}
+    />
   );
-});
+};
 
 CollisionMechanism.displayName = "CollisionMechanism";
+
+export default BackgroundBeamsWithCollision;

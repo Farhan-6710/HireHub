@@ -6,7 +6,6 @@ import { ThemeProvider } from "./ThemeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
 import BothHeaders from "./components/header/BothHeaders";
-import ClientLayout from "./ClientLayout"; // Import the client component
 
 // Load Eczar font from Google
 const eczar = Eczar({
@@ -52,9 +51,7 @@ export default function RootLayout({
           >
             <div className="relative z-10">
               <BothHeaders />
-            </div>
-            {/* Wrap the dynamic content in ClientLayout */}
-            <ClientLayout>{children}</ClientLayout>
+            </div>{children}
           </ThemeProvider>
         </body>
       </html>

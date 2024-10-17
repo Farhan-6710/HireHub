@@ -29,7 +29,7 @@ export default function BlurryBlobTwo({
           <>
             <div
               className={cn(
-                "absolute h-40 w-40 right-10 top-24 sm:right-20 sm:top-14 lg:right-32 dark:lg:right-56 lg:top-0 lg:h-72 lg:w-72 rounded-sm p-8 mix-blend-multiply blur-3xl filter transition-opacity delay-1000 duration-2000 animate-move-blobs", // Custom animation applied
+                "absolute h-40 w-40 right-10 top-24 sm:right-20 sm:top-14 lg:right-32 dark:lg:right-56 lg:top-0 lg:h-72 lg:w-72 rounded-sm p-8 mix-blend-multiply blur-3xl filter transition-opacity duration-1500 animate-move-blobs", // Custom animation applied
                 className,
                 firstBlobColor
               )}

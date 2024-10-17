@@ -3,7 +3,7 @@
 // Animation variants
 export const fade = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 2, delay: 1.4 } },
+  visible: { opacity: 1, transition: { duration: 2.5, delay: 1.8 } },
 };
 
 export const fadeSlideUp = {

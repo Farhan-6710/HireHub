@@ -16,7 +16,7 @@ const Hero = () => {
   const isInView = useInView(ref, { once: true }); // Trigger animation only once
 
   return (
-    <div className="flex flex-col justify-center items-center p-4 py-12 sm:py-16 xl:py-24 xl:pb-10 2xl:py-28 2xl:pb-20 container mx-auto relative z-0">
+    <div className="flex flex-col justify-center items-center p-4 py-12 pb-6 xs:pb-8 sm:py-16 xl:py-24 xl:pb-10 2xl:py-28 2xl:pb-20 container mx-auto relative z-0">
       
       <motion.h1
         ref={ref}

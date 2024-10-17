@@ -63,14 +63,14 @@ const BothHeaders = () => {
       </motion.div>
 
       {/* Mobile Menu Background */}
-      {isOpen && (
-        <div
-          className={`fixed h-screen inset-0 bg-gray-800 dark:bg-black bg-opacity-75 dark:bg-opacity-50 backdrop-blur-sm transition-opacity duration-300 z-20`}
-          onClick={toggleMenu}
-        />
-      )}
+      <div
+        className={`fixed h-screen inset-0 bg-gray-800 dark:bg-black bg-opacity-75 dark:bg-opacity-50 backdrop-blur-sm transition-opacity duration-300 z-20 ${
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={toggleMenu}
+      />
 
-      {/* Mobile Sidebar Menu */}
+      {/* Mobile Menu */}
       <div
         className={`fixed left-0 top-0 h-screen bg-white dark:bg-slate-950 transform transition-transform duration-300 z-30`}
         style={{
@@ -84,14 +84,19 @@ const BothHeaders = () => {
               Hirehub
             </div>
           </div>
-          {["Home", "About", "Services", "Contact"].map((item) => (
+          {[
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+            { name: "Services", path: "/services" },
+            { name: "Contact", path: "/contact-us" },
+          ].map((item) => (
             <a
-              key={item}
-              href="#"
+              key={item.name}
+              href={item.path} // Set the href to the corresponding path
               className="block text-slate-950 hover:underline mb-2 dark:text-gray-200"
-              onClick={toggleMenu}
+              onClick={toggleMenu} // Ensure the menu toggle function is called on click
             >
-              {item}
+              {item.name}
             </a>
           ))}
         </nav>

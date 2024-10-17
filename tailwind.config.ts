@@ -22,7 +22,7 @@ const config: Config = {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
 			'pop-blob': 'pop-blob 5s infinite',
-			'duration-1500': '1500ms', // Added duration-500 for 500ms transition
+			'move-blobs': 'move 2s ease-in-out infinite alternate',
   		},
   		screens: {
   			xs: '440px'
@@ -87,6 +87,14 @@ const config: Config = {
   					height: 'var(--radix-accordion-content-height)'
   				}
   			},
+			 move: {
+				'0%': { 
+					transform: 'translateY(-4rem)' 
+				},
+				'100%': { 
+					transform: 'translateY(8rem)' // Correct syntax, both translations in the same transform property
+				},
+			},
   			'accordion-up': {
   				from: {
   					height: 'var(--radix-accordion-content-height)'

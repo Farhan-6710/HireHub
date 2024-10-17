@@ -1,4 +1,5 @@
-import type { Metadata } from "next";import localFont from "next/font/local";
+import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Eczar } from "next/font/google"; // Import Eczar font
 import "./globals.css";
 import { ThemeProvider } from "./ThemeProvider";
@@ -34,7 +35,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider appearance={{ baseTheme: shadesOfPurple }}>
+    <ClerkProvider
+      appearance={{ baseTheme: shadesOfPurple }}
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+    >
       <html lang="en" suppressHydrationWarning className="duration-300">
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${eczar.className} antialiased`}

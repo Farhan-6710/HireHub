@@ -7,8 +7,8 @@ import {
 
 function AccordionComponent() {
   return (
-    <div className="container mx-auto xl:px-52 md:px-20 px-6 pb-[100px]">
-      <div className="backdrop-blur-sm dark:bg-slate-800/30 bg-gray-100/30 border border-white/10 rounded-lg shadow-xl px-10 py-4">
+    <div className="container mx-auto xl:px-52 md:px-20 px-4 pb-[100px]">
+      <div className="backdrop-blur-sm dark:bg-slate-800/30 bg-gray-100/30 border border-white/10 rounded-lg shadow-xl px-8 py-4">
         <Accordion type="single" collapsible>
           {/* FAQ for Job Seekers */}
           <AccordionItem value="item-1">

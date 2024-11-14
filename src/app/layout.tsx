@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Eczar } from "next/font/google"; // Import Eczar font
 import "./globals.css";
-import { ThemeProvider } from "./ThemeProvider";
+import { ThemeProvider } from "./components/extras/ThemeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
 import BothHeaders from "./components/header/BothHeaders";
@@ -45,13 +45,14 @@ export default function RootLayout({
         >
           <ThemeProvider
             attribute="class"
-            defaultTheme="light"
+            defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
             <div className="relative z-10">
               <BothHeaders />
-            </div>{children}
+            </div>
+            {children}
           </ThemeProvider>
         </body>
       </html>

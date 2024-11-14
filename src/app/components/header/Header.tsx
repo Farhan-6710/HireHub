@@ -6,7 +6,6 @@ import LogoAndTitle from "./LogoAndTitle";
 import NavLinks from "./NavLinks";
 import AuthButtons from "./AuthButtons";
 import { SignIn } from "@clerk/nextjs";
-import BlurryBlobTwo from "@/components/ui/BlurryBlobTwo";
 
 interface HeaderProps {
   toggleMenu: () => void;
@@ -24,12 +23,7 @@ const Header: React.FC<HeaderProps> = ({ toggleMenu, isOpen }) => {
   };
 
   return (
-    <div className="relative z-10 dark:border-b border-gray-900 bg-white dark:bg-slate-950 shadow-sm">
-      <BlurryBlobTwo
-        className="rounded-xl opacity-45"
-        firstBlobColor="bg-purple-400"
-        secondBlobColor="bg-blue-400"
-      />
+    <div className="relative z-10 dark:border-b border-gray-900 backdrop-blur-sm bg-white/40 dark:bg-slate-950/40 shadow-sm">
       <header className="text-slate-950 p-4 py-3 xl:px-12 flex justify-between items-center container mx-auto">
         <LogoAndTitle />
         <NavLinks />
